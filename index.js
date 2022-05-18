@@ -5,7 +5,9 @@ import * as github from '@actions/github'
 async function run() {
   try {
     const merge_commit_number = github.context.payload.pull_request.merge_commit_sha
+    const head_commit_number = github.context.payload.pull_request.head.sha
     core.info(`merge_commit_number == ${merge_commit_number}`)
+    core.info(`head_commit_number == ${head_commit_number}`)
   } catch (error) {
     core.setFailed(error.message);
   }
