@@ -1947,23 +1947,6 @@ exports.debug = debug; // for test
 
 /***/ }),
 
-/***/ 258:
-/***/ ((module) => {
-
-let wait = function (milliseconds) {
-  return new Promise((resolve) => {
-    if (typeof milliseconds !== 'number') {
-      throw new Error('milliseconds not a number');
-    }
-    setTimeout(() => resolve("done!"), milliseconds)
-  });
-};
-
-module.exports = wait;
-
-
-/***/ }),
-
 /***/ 716:
 /***/ ((module) => {
 
@@ -2149,7 +2132,6 @@ __nccwpck_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_github__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nccwpck_require__.n(_actions_github__WEBPACK_IMPORTED_MODULE_1__);
 
 
-const wait = __nccwpck_require__(258);
 const { Octokit } = __nccwpck_require__(820)
 const octokit =new Octokit()
 
