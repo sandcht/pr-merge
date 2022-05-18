@@ -1,6 +1,6 @@
 import * as core from '@actions/core'
 import * as github from '@actions/github'
-const wait = require('./wait');
+const core = require('@actions/core');
 const { Octokit } = require('@octokit/action')
 const octokit =new Octokit()
 
