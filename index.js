@@ -1,18 +1,14 @@
-const core = require('@actions/core');
+import * as core from '@actions/core'
+import * as github from '@actions/github'
 const wait = require('./wait');
-
+const { Octokit } = require('@octokit/action')
+const octokit =new Octokit()
 
 // most @actions toolkit packages have async methods
 async function run() {
   try {
-    const ms = core.getInput('milliseconds');
-    core.info(`Waiting ${ms} milliseconds ...`);
-
-    core.debug((new Date()).toTimeString()); // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
-    await wait(parseInt(ms));
-    core.info((new Date()).toTimeString());
-
-    core.setOutput('time', new Date().toTimeString());
+    const merge_commit_number = github.context.payload.pull_request.merge_commit_sha
+    core.info(`merge_commit_number ${merge_commit_number}`)
   } catch (error) {
     core.setFailed(error.message);
   }
