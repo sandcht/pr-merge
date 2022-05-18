@@ -10,7 +10,7 @@
     "all": "npm run lint && npm run prepare && npm run test"
   },
   "repository": {
-    "type": "git",
+    "type": "module",
     "url": "git+https://github.com/actions/javascript-action.git"
   },
   "keywords": [
