@@ -4,10 +4,7 @@ permissions:
   pull-requests: write
 on:
   pull_request:
-  push:
-    branches:
-      - main
-      - "releases/*"
+    types: [opened, reopened, synchronize, edited, closed]
 
 jobs:
   # unit tests
