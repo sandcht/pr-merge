@@ -1,7 +1,5 @@
 import * as core from '@actions/core'
 import * as github from '@actions/github'
-const { Octokit } = require('@octokit/action')
-const octokit =new Octokit()
 
 // most @actions toolkit packages have async methods
 async function run() {
