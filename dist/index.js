@@ -9723,9 +9723,9 @@ __nccwpck_require__.r(__webpack_exports__);
 async function run() {
   try {
     const merge_commit_number = _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.payload.pull_request.merge_commit_sha
-    const head_commit_number = _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.payload.pull_request.head.sha
+    _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput('merge_commit_number', merge_commit_number)
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`merge_commit_number == ${merge_commit_number}`)
-    _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`head_commit_number == ${head_commit_number}`)
+    
   } catch (error) {
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(error.message);
   }
