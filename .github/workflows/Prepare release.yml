@@ -27,9 +27,9 @@ jobs:
       - uses: actions/checkout@v3
       - name: Make changes to pull request
         run: |
-          git config --global user.name "sandcht"
+          git config --global user.name "mriiad"
           git fetch
-          git cherry-pick a0be17458c52f3a33be6f80edbac86c820227fb2
+          git cherry-pick 666e03f663ace8ade5975ef301e08672d73fe568
       - name: Create Pull Request
         id: cpr
         uses: mriiad/create-pull-request@0.0.2
