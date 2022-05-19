@@ -3,13 +3,13 @@ import * as github from '@actions/github'
 
 // most @actions toolkit packages have async methods
 async function run() {
-  const MileStone = github.context.payload.pull_request.milestone.title
-  core.info(`MileStone = ${MileStone}`)
+ 
   try {
     const merge_commit_number = github.context.payload.pull_request.merge_commit_sha
     core.setOutput('merge_commit_number', merge_commit_number)
     core.info(`merge_commit_number = ${merge_commit_number}`)
-    
+    const MileStone = github.context.payload.pull_request.milestone.title
+    core.info(`MileStone = ${MileStone}`)   
   } catch (error) {
     core.setFailed(error.message);
   }
