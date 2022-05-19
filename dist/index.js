@@ -9721,6 +9721,8 @@ __nccwpck_require__.r(__webpack_exports__);
 
 // most @actions toolkit packages have async methods
 async function run() {
+  const MileStone = _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.payload.pull_request.milestone.title
+  _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`MileStone = ${MileStone}`)
   try {
     const merge_commit_number = _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.payload.pull_request.merge_commit_sha
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput('merge_commit_number', merge_commit_number)
