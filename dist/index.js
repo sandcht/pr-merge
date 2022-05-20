@@ -9720,19 +9720,54 @@ __nccwpck_require__.r(__webpack_exports__);
 
 
 // most @actions toolkit packages have async methods
+const CHERRY_PICK_BRANCH =[]
+const MileStone = _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.payload.pull_request.milestone.title
+_actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`MileStone = ${MileStone}`) 
+const ReleaseConfiguration = [
+  {
+    nom: "PALLADIUM",
+    branch: "release/palladium",
+    tag: 'xxxx',
+    isActive: false
+  },
+  {
+    nom: "FLUOR",
+    branch: "release/fluor",
+    tag: 'EN COURS - xxxx',
+    isActive: false
+  },{
+    nom: "ARGON",
+    branch: "develop",
+    tag: 'EN COURS - 4.argon-beta.3',
+    isActive: true
+  },
+  {
+    nom: "PHOSPHORE",
+    branch: "release/phosphore",
+    tag: 'EN COURS - 4.argon-beta.3',
+    isActive: false
+  },
+]
+
 async function run() {
- 
+
   try {
     const merge_commit_number = _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.payload.pull_request.merge_commit_sha
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput('merge_commit_number', merge_commit_number)
-    _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`merge_commit_number = ${merge_commit_number}`)
-    const MileStone = _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.payload.pull_request.milestone.title
-    _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`MileStone = ${MileStone}`)   
+    _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`merge_commit_number = ${merge_commit_number}`)  
+    await cherry_pick_branch (ReleaseConfiguration,MileStone)
   } catch (error) {
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(error.message);
   }
 }
+async function cherry_pick_branch (ReleaseConfiguration,MileStone){
+  const index_milestone = ReleaseConfiguration.findIndex((config)=> config.nom==MileStone.toUpperCase())
+  _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`index_milestone  = ${index_milestone }`)
+  const index_Sprint_Actif = ReleaseConfiguration.findIndex((config)=> config.isActive==true)
+  CHERRY_PICK_BRANCH.push(ReleaseConfiguration.slice(index_milestone,index_Sprint_Actif))
+  _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`CHERRY_PICK_BRANCH = ${CHERRY_PICK_BRANCH}`)
 
+}
 run();
 
 })();
