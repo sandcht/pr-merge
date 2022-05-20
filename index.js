@@ -44,6 +44,7 @@ async function run() {
     const merge_commit_number = github.context.payload.pull_request.merge_commit_sha
     core.setOutput('merge_commit_number', merge_commit_number)
     core.info(`merge_commit_number = ${merge_commit_number}`)  
+    core.info(`merge_commit_number = ${merge_commit_number}`)  
     await cherry_pick_base_branch (ReleaseConfiguration,MileStone)
     core.setOutput('CHERRY_PICK_BRANCH_LIST', CHERRY_PICK_BRANCH_LIST)
 
