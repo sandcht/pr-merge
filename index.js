@@ -2,7 +2,6 @@ import * as core from '@actions/core'
 import * as github from '@actions/github'
 
 // most @actions toolkit packages have async methods
-const CHERRY_PICK_BRANCH =[]
 const MileStone = github.context.payload.pull_request.milestone.title
 core.info(`MileStone = ${MileStone}`) 
 const ReleaseConfiguration = [
@@ -47,10 +46,8 @@ async function cherry_pick_base_branch (ReleaseConfiguration,MileStone){
   core.info(`index_milestone  = ${index_milestone }`)
   const index_Sprint_Actif = ReleaseConfiguration.findIndex((config)=> config.isActive==true)
   core.info(`index_Sprint_Actif= ${index_Sprint_Actif  }`)
-  CHERRY_PICK_BRANCH.push(ReleaseConfiguration.slice(index_milestone,index_Sprint_Actif).map((SubReleaseConfiguration)=>SubReleaseConfiguration.branch))
+  const CHERRY_PICK_BRANCH=ReleaseConfiguration.slice(index_milestone,index_Sprint_Actif).map((SubReleaseConfiguration)=>SubReleaseConfiguration.branch)
   core.info(JSON.stringify(CHERRY_PICK_BRANCH))
-  core.info(`taille du tableau  == ${CHERRY_PICK_BRANCH.length}`)
-  core.info(JSON.stringify(ReleaseConfiguration.slice(index_milestone,index_Sprint_Actif)))
 
 }
 run();
