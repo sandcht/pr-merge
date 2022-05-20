@@ -17,7 +17,14 @@ const ReleaseConfiguration = [
     branch: "release/fluor",
     tag: 'EN COURS - xxxx',
     isActive: false
-  },{
+  },
+  {
+    nom: "MAIN",
+    branch: "main",
+    tag: 'EN COURS - 4.argon-beta.3',
+    isActive: false
+  },
+  {
     nom: "ARGON",
     branch: "develop",
     tag: 'EN COURS - 4.argon-beta.3',
