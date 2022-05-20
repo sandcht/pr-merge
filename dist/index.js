@@ -9767,7 +9767,7 @@ async function cherry_pick_branch (ReleaseConfiguration,MileStone){
   _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`index_Sprint_Actif   = ${index_Sprint_Actif  }`)
   CHERRY_PICK_BRANCH.push(ReleaseConfiguration.slice(index_milestone,index_Sprint_Actif))
   _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`taille du tableau = ${CHERRY_PICK_BRANCH.length}`)
-  _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(CHERRY_PICK_BRANCH[0])
+  _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(CHERRY_PICK_BRANCH[0].branch)
 
 }
 run();
