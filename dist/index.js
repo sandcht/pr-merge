@@ -9775,6 +9775,7 @@ async function cherry_pick_base_branch (ReleaseConfiguration,MileStone){
   const index_Sprint_Actif = ReleaseConfiguration.findIndex((config)=> config.isActive==true)
   _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`index_Sprint_Actif= ${index_Sprint_Actif  }`)
   CHERRY_PICK_BRANCH_LIST=ReleaseConfiguration.slice(index_milestone,index_Sprint_Actif).map((SubReleaseConfiguration)=>SubReleaseConfiguration.branch)
+  _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`CHERRY_PICK_BRANCH_LIST`)
   _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(JSON.stringify(CHERRY_PICK_BRANCH_LIST))
 
 }
