@@ -27,6 +27,8 @@ jobs:
           echo `git log --author=Dppcontrat -1`
       - uses: sandcht/pr-merge@v1.0.1
         id: getMergeSHA
+      - uses: sandcht/pr-merge@v1.0.1
+        id: getCherryPickBranchList
       - uses: actions/checkout@v3
       - name: Make changes to pull request
         run: |
@@ -43,7 +45,7 @@ jobs:
           author: ${{ github.actor }} <${{ github.actor }}@mohamed.riad.externe@darva.com>
           signoff: false
           branch: 8620_cherryPick_3
-          base: release/fluor
+          base: ${{steps.getCherryPickBranchList.outputs.CHERRY_PICK_BRANCH_LIST}}
           delete-branch: true
           title: "[AUTO] create pull request"
           body: |
