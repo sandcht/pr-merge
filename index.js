@@ -50,7 +50,7 @@ async function cherry_pick_base_branch (ReleaseConfiguration,MileStone){
   CHERRY_PICK_BRANCH.push(ReleaseConfiguration.slice(index_milestone,index_Sprint_Actif))
   core.info(JSON.stringify(CHERRY_PICK_BRANCH))
   core.info(`taille du tableau = ${CHERRY_PICK_BRANCH.length}`)
-  core.info(JSON.stringify(ReleaseConfiguration.slice(index_milestone,index_Sprint_Actif)))
+  core.info(JSON.stringify((ReleaseConfiguration.slice(index_milestone,index_Sprint_Actif)).branch))
 
 }
 run();
