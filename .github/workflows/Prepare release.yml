@@ -45,7 +45,7 @@ jobs:
           author: ${{ github.actor }} <${{ github.actor }}@mohamed.riad.externe@darva.com>
           signoff: false
           branch: 8620_cherryPick_3
-          base: ${{steps.getCherryPickBranchList.outputs.CHERRY_PICK_BRANCH_LIST}}
+          base: ${{steps.getCherryPickBranchList.outputs.CHERRY_PICK_BRANCH_LIST[0]}}
           delete-branch: true
           title: "[AUTO] create pull request"
           body: |
