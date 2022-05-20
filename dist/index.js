@@ -9765,10 +9765,10 @@ async function cherry_pick_base_branch (ReleaseConfiguration,MileStone){
   _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`index_milestone  = ${index_milestone }`)
   const index_Sprint_Actif = ReleaseConfiguration.findIndex((config)=> config.isActive==true)
   _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`index_Sprint_Actif= ${index_Sprint_Actif  }`)
-  CHERRY_PICK_BRANCH.push(ReleaseConfiguration.slice(index_milestone,index_Sprint_Actif))
+  CHERRY_PICK_BRANCH.push(ReleaseConfiguration.slice(index_milestone,index_Sprint_Actif).branch)
   _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(JSON.stringify(CHERRY_PICK_BRANCH))
   _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`taille du tableau  = ${CHERRY_PICK_BRANCH.length}`)
-  _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(JSON.stringify(ReleaseConfiguration.slice(index_milestone,index_Sprint_Actif)[0].branch))
+  _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(JSON.stringify(ReleaseConfiguration.slice(index_milestone,index_Sprint_Actif).branch))
 
 }
 run();
