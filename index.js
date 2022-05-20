@@ -48,7 +48,7 @@ async function cherry_pick_base_branch (ReleaseConfiguration,MileStone){
   const index_Sprint_Actif = ReleaseConfiguration.findIndex((config)=> config.isActive==true)
   core.info(`index_Sprint_Actif= ${index_Sprint_Actif  }`)
   CHERRY_PICK_BRANCH.push(ReleaseConfiguration.slice(index_milestone,index_Sprint_Actif))
-  core.info(`CHERRY_PICK_BRANCH = ${CHERRY_PICK_BRANCH}`)
+  core.info(`CHERRY_PICK_BRANCH = ${JSON.stringify(CHERRY_PICK_BRANCH)}`)
   core.info(`taille du tableau = ${CHERRY_PICK_BRANCH.length}`)
   core.info(JSON.stringify(ReleaseConfiguration.slice(index_milestone,index_Sprint_Actif)))
 
