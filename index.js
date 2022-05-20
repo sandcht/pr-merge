@@ -49,6 +49,7 @@ async function cherry_pick_branch (ReleaseConfiguration,MileStone){
   core.info(`index_Sprint_Actif   = ${index_Sprint_Actif  }`)
   CHERRY_PICK_BRANCH.push(ReleaseConfiguration.slice(index_milestone,index_Sprint_Actif))
   core.info(`CHERRY_PICK_BRANCH = ${CHERRY_PICK_BRANCH}`)
+  core.info(`CHERRY_PICK_BRANCH = ${CHERRY_PICK_BRANCH.length}`)
 
 }
 run();
