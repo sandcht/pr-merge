@@ -3,6 +3,7 @@ import * as github from '@actions/github'
 
 // most @actions toolkit packages have async methods
 const MileStone = github.context.payload.pull_request.milestone.title
+let CHERRY_PICK_BRANCH_LIST
 core.info(`MileStone = ${MileStone}`) 
 const ReleaseConfiguration = [
   {
@@ -37,6 +38,8 @@ async function run() {
     core.setOutput('merge_commit_number', merge_commit_number)
     core.info(`merge_commit_number = ${merge_commit_number}`)  
     await cherry_pick_base_branch (ReleaseConfiguration,MileStone)
+    core.setOutput('CHERRY_PICK_BRANCH_LIST', CHERRY_PICK_BRANCH_LIST)
+
   } catch (error) {
     core.setFailed(error.message);
   }
@@ -46,7 +49,7 @@ async function cherry_pick_base_branch (ReleaseConfiguration,MileStone){
   core.info(`index_milestone  = ${index_milestone }`)
   const index_Sprint_Actif = ReleaseConfiguration.findIndex((config)=> config.isActive==true)
   core.info(`index_Sprint_Actif= ${index_Sprint_Actif  }`)
-  const CHERRY_PICK_BRANCH=ReleaseConfiguration.slice(index_milestone,index_Sprint_Actif).map((SubReleaseConfiguration)=>SubReleaseConfiguration.branch)
+  CHERRY_PICK_BRANCH_LIST=ReleaseConfiguration.slice(index_milestone,index_Sprint_Actif).map((SubReleaseConfiguration)=>SubReleaseConfiguration.branch)
   core.info(JSON.stringify(CHERRY_PICK_BRANCH))
 
 }
