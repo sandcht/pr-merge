@@ -30,7 +30,7 @@ jobs:
         run: |
           git config --global user.name "sandcht"
           git fetch
-          git cherry-pick -m 1 ac83f4e761a9869235cee3621b4ffe0024d38eeb
+          git cherry-pick --skip
       - name: Create Pull Request
         id: cpr
         uses: mriiad/create-pull-request@0.0.2
