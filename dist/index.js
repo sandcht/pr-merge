@@ -9720,17 +9720,57 @@ __nccwpck_require__.r(__webpack_exports__);
 
 
 // most @actions toolkit packages have async methods
+const MileStone = _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.payload.pull_request.milestone.title
+let CHERRY_PICK_BRANCH_LIST
+_actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`MileStone = ${MileStone}`) 
+const ReleaseConfiguration = [
+  {
+    nom: "PALLADIUM",
+    branch: "release/palladium",
+    tag: 'xxxx',
+    isActive: false
+  },
+  {
+    nom: "FLUOR",
+    branch: "release/fluor",
+    tag: 'EN COURS - xxxx',
+    isActive: false
+  },{
+    nom: "ARGON",
+    branch: "develop",
+    tag: 'EN COURS - 4.argon-beta.3',
+    isActive: true
+  },
+  {
+    nom: "PHOSPHORE",
+    branch: "release/phosphore",
+    tag: 'EN COURS - 4.argon-beta.3',
+    isActive: false
+  },
+]
+
 async function run() {
+
   try {
     const merge_commit_number = _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.payload.pull_request.merge_commit_sha
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput('merge_commit_number', merge_commit_number)
-    _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`merge_commit_number == ${merge_commit_number}`)
-    
+    _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`merge_commit_number = ${merge_commit_number}`)  
+    await cherry_pick_base_branch (ReleaseConfiguration,MileStone)
+    _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput('CHERRY_PICK_BRANCH_LIST', CHERRY_PICK_BRANCH_LIST)
+
   } catch (error) {
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(error.message);
   }
 }
+async function cherry_pick_base_branch (ReleaseConfiguration,MileStone){
+  const index_milestone = ReleaseConfiguration.findIndex((config)=> config.nom==MileStone.toUpperCase())
+  _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`index_milestone  = ${index_milestone }`)
+  const index_Sprint_Actif = ReleaseConfiguration.findIndex((config)=> config.isActive==true)
+  _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`index_Sprint_Actif= ${index_Sprint_Actif  }`)
+  CHERRY_PICK_BRANCH_LIST=ReleaseConfiguration.slice(index_milestone,index_Sprint_Actif).map((SubReleaseConfiguration)=>SubReleaseConfiguration.branch)
+  _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(JSON.stringify(CHERRY_PICK_BRANCH_LIST))
 
+}
 run();
 
 })();
