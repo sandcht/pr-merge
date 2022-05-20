@@ -9755,19 +9755,19 @@ async function run() {
     const merge_commit_number = _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.payload.pull_request.merge_commit_sha
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput('merge_commit_number', merge_commit_number)
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`merge_commit_number = ${merge_commit_number}`)  
-    await cherry_pick_branch (ReleaseConfiguration,MileStone)
+    await cherry_pick_base_branch (ReleaseConfiguration,MileStone)
   } catch (error) {
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(error.message);
   }
 }
-async function cherry_pick_branch (ReleaseConfiguration,MileStone){
+async function cherry_pick_base_branch (ReleaseConfiguration,MileStone){
   const index_milestone = ReleaseConfiguration.findIndex((config)=> config.nom==MileStone.toUpperCase())
   _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`index_milestone  = ${index_milestone }`)
   const index_Sprint_Actif = ReleaseConfiguration.findIndex((config)=> config.isActive==true)
   _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`index_Sprint_Actif   = ${index_Sprint_Actif  }`)
   CHERRY_PICK_BRANCH.push(ReleaseConfiguration.slice(index_milestone,index_Sprint_Actif))
   _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`taille du tableau = ${CHERRY_PICK_BRANCH.length}`)
-  _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(CHERRY_PICK_BRANCH[0].branch)
+  _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(JSON.stringify(CHERRY_PICK_BRANCH))
 
 }
 run();
