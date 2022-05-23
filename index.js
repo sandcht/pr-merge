@@ -19,8 +19,8 @@ const ReleaseConfiguration = [
     isActive: false
   },
   {
-    nom: "MASTER",
-    branch: "master",
+    nom: "MAIN",
+    branch: "main",
     tag: 'EN COURS - 4.argon-beta.3',
     isActive: false
   },
