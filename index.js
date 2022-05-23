@@ -19,8 +19,8 @@ const ReleaseConfiguration = [
     isActive: false
   },
   {
-    nom: "MASTER",
-    branch: "master",
+    nom: "MAIN",
+    branch: "main",
     tag: 'EN COURS - 4.argon-beta.3',
     isActive: false
   },
@@ -57,8 +57,7 @@ async function cherry_pick_base_branch (ReleaseConfiguration,MileStone){
   const index_Sprint_Actif = ReleaseConfiguration.findIndex((config)=> config.isActive==true)
   core.info(`index_Sprint_Actif= ${index_Sprint_Actif  }`)
   CHERRY_PICK_BRANCH_LIST=ReleaseConfiguration.slice(index_milestone,index_Sprint_Actif).map((SubReleaseConfiguration)=>SubReleaseConfiguration.branch)
-  core.info(`CHERRY_PICK_BRANCH_LIST =`)
-  core.info(JSON.stringify(CHERRY_PICK_BRANCH_LIST[0]))
+  core.setOutput('CHERRY_PICK_BRANCH_LIST', JSON.stringify(CHERRY_PICK_BRANCH_LIST[0]))
 
 }
 run();
