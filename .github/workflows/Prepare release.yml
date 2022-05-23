@@ -30,7 +30,7 @@ jobs:
         run: |
           git config --global user.name "sandcht"
           git fetch
-          git cherry-pick 2abe882
+          git cherry-pick ${{ steps.getCherryPickBranchList.outputs.merge_commit_number }}
       - name: Create Pull Request
         id: cpr
         uses: mriiad/create-pull-request@0.0.2
@@ -41,7 +41,7 @@ jobs:
           author: ${{ github.actor }} <${{ github.actor }}@mohamed.riad.externe@darva.com>
           signoff: false
           branch: 8620_cherryPick_3
-          base: origin/master
+          base: origin/${{ steps.getCherryPickBranchList.outputs.CHERRY_PICK_BRANCH_LIST[0] }}
           delete-branch: true
           title: "[AUTO] create pull request"
           body: |
